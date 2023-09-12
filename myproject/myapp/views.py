@@ -21,7 +21,7 @@ class IntroductionViewSet(ModelViewSet):
 
         if 'search' in request.query_params and not queryset.exists():
          
-            return Response({"message": "Searched item not found."}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Searched item not foun."}, status=status.HTTP_404_NOT_FOUND)
 
         if 'ordering' in request.query_params and not queryset.exists():
          
@@ -34,7 +34,10 @@ class IntroductionViewSet(ModelViewSet):
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-
+  class ModelDeleteView(DeleteView):
+        model = Model
+        template_name = ".html"
+    
 
 
 
